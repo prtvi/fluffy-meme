@@ -1,11 +1,23 @@
 :root {
 	--ff-poppins: 'Poppins', sans-serif;
-	--margin-bottom: 50px;
 
 	--welcome-divs-height: 60vh;
-
 	--img-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
 		0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	--fs-1: 24px;
+	--fs-2: 18px;
+	--fs-3: 17px;
+	--fs-4: 16px;
+	--fs-5: 15px;
+	--fs-6: 14px;
+	--fs-7: 13px;
+	--fs-8: 11px;
+
+	--fw-300: 300;
+	--fw-400: 400;
+	--fw-500: 500;
+	--fw-600: 600;
 }
 
 * {
@@ -124,9 +136,10 @@ button {
 /* WELCOME */
 
 .welcome {
-	height: 80vh;
+	height: 75vh;
 	padding: 20px;
-	margin-bottom: var(--margin-bottom);
+	margin-top: 40px;
+	margin-bottom: 50px;
 }
 
 .welcome-logo,
@@ -136,7 +149,7 @@ button {
 	float: left;
 	width: 46%;
 	display: inline;
-	margin-bottom: var(--margin-bottom);
+	margin-bottom: 80px;
 }
 
 .welcome-logo {
@@ -175,7 +188,7 @@ button {
 .about {
 	height: fit-content;
 	padding: 20px;
-	margin-bottom: var(--margin-bottom);
+	margin-bottom: 50px;
 	text-align: center;
 }
 
@@ -215,8 +228,9 @@ button {
 }
 
 .btn-tab {
+	font-size: var(--fs-2);
 	padding: 20px 10px;
-	font-weight: 400;
+	font-weight: var(--fw-400);
 }
 
 .btn-tab.active {
@@ -224,8 +238,23 @@ button {
 }
 
 .tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
 	padding: 10px;
 	text-align: center;
+	animation: fade 1s ease backwards;
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* for art and photography */
@@ -246,7 +275,7 @@ button {
 	height: 60%;
 	width: 100%;
 	text-align: center;
-	margin-bottom: var(--margin-bottom);
+	margin-bottom: 50px;
 }
 
 .design .img-container,
@@ -257,10 +286,15 @@ button {
 	margin: 0 auto 0 auto;
 }
 
-.design .img-container img {
+.design-preview-img {
 	width: 90%;
+	height: 300px;
 	margin-bottom: 20px;
 	box-shadow: var(--img-box-shadow);
+}
+
+.design span {
+	color: gray;
 }
 
 /* horizontal scroll */
@@ -289,7 +323,7 @@ button {
 	border-radius: 5px;
 }
 
-.h-item img.active {
+.h-item.active img {
 	border: 4px solid pink;
 }
 

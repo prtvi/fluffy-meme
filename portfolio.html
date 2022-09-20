@@ -46,28 +46,15 @@
 				</header>
 
 				<div class="tabs">
-					<button class="btn-tab active">Art</button> |
-					<button class="btn-tab">Design</button> |
-					<button class="btn-tab">Photography</button>
+					<button data-btn-tab="art" class="btn-tab active">Art</button> |
+					<button data-btn-tab="design" class="btn-tab">Design</button> |
+					<button data-btn-tab="photography" class="btn-tab">
+						Photography
+					</button>
 				</div>
 
-				<div class="tab-content art hidden">
+				<div data-tab="art" class="tab-content art active">
 					<ul class="art-item-list">
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random art description</p>
-						</li>
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random art description</p>
-						</li>
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random art description</p>
-						</li>
 						<li class="art-item">
 							<img src="./assets/about-image.png" alt="art-item1" />
 
@@ -81,10 +68,14 @@
 					</ul>
 				</div>
 
-				<div class="tab-content design">
+				<div data-tab="design" class="tab-content design">
 					<div class="design">
 						<div class="img-container">
-							<img src="./assets/about-image.png" alt="asd" />
+							<img
+								class="design-preview-img"
+								src="./assets/designs/d1.png"
+								alt="asd"
+							/>
 						</div>
 
 						<div class="desc-container">
@@ -95,49 +86,25 @@
 					</div>
 
 					<div class="h-scroll">
-						<ul>
-							<li class="h-item">
-								<img class="active" src="./assets/about-image.png" alt="" />
+						<ul class="h-item-list">
+							<li class="h-item active" id="d1">
+								<img src="./assets/designs/d1.png" alt="" />
 							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
+							<li class="h-item" id="d2">
+								<img src="./assets/designs/d2.png" alt="" />
 							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
+							<li class="h-item" id="d3">
+								<img src="./assets/designs/d3.png" alt="" />
 							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
-							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
-							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
-							</li>
-							<li class="h-item">
-								<img src="./assets/about-image.png" alt="" />
+							<li class="h-item" id="d4">
+								<img src="./assets/designs/d4.png" alt="" />
 							</li>
 						</ul>
 					</div>
 				</div>
 
-				<div class="tab-content photography hidden">
+				<div data-tab="photography" class="tab-content photography">
 					<ul class="art-item-list">
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random photo description</p>
-						</li>
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random photo description</p>
-						</li>
-						<li class="art-item">
-							<img src="./assets/about-image.png" alt="art-item1" />
-
-							<p>Some random photo description</p>
-						</li>
 						<li class="art-item">
 							<img src="./assets/about-image.png" alt="art-item1" />
 
