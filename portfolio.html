@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- custom css -->
+		<link rel="stylesheet" href="./style.css" />
+
+		<title>The Idyllic Palette | Portfolio</title>
+	</head>
+	<body>
+		<main>
+			<!-- NAVBAR -->
+			<nav class="navbar">
+				<a href="./index.html" class="nav-link">TIP Logo</a>
+
+				<a href="./index.html#about" class="nav-link">About</a>
+
+				<a href="#" class="nav-link active">Portfolio</a>
+
+				<a href="#contact" class="nav-link">Contact</a>
+
+				<a href="#" class="nav-link icon">
+					<img
+						class="hamburger-icon"
+						src="./assets/hamburger.png"
+						alt="navbar menu"
+					/>
+				</a>
+			</nav>
+
+			<!-- Section portfolio -->
+			<section class="portfolio" id="portfolio">
+				<header>
+					<h1>Portfolio</h1>
+				</header>
+
+				<div class="tabs">
+					<button class="btn-tab active">Art</button> |
+					<button class="btn-tab">Design</button> |
+					<button class="btn-tab">Photography</button>
+				</div>
+
+				<div class="tab-content art hidden">
+					<ul class="art-item-list">
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random art description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random art description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random art description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random art description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random art description</p>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab-content design">
+					<div class="design">
+						<div class="img-container">
+							<img src="./assets/about-image.png" alt="asd" />
+						</div>
+
+						<div class="desc-container">
+							<h3 class="desc-title">Some random title</h3>
+							<p class="desc-text">some lorem ipsum</p>
+							<span>19th Sept, 2022</span>
+						</div>
+					</div>
+
+					<div class="h-scroll">
+						<ul>
+							<li class="h-item">
+								<img class="active" src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+							<li class="h-item">
+								<img src="./assets/about-image.png" alt="" />
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="tab-content photography hidden">
+					<ul class="art-item-list">
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random photo description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random photo description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random photo description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random photo description</p>
+						</li>
+						<li class="art-item">
+							<img src="./assets/about-image.png" alt="art-item1" />
+
+							<p>Some random photo description</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<footer class="footer" id="footer">© V | 2022</footer>
+		</main>
+
+		<script src="script.js"></script>
+	</body>
+</html>
