@@ -18,6 +18,9 @@
 	--fw-400: 400;
 	--fw-500: 500;
 	--fw-600: 600;
+
+	/* Responsive screen widths */
+	/* 580, 768, 1024, 1250 */
 }
 
 * {
@@ -51,22 +54,13 @@ button {
 	font-family: var(--ff-poppins);
 }
 
-/* classes and stuff */
+/* 
+	all these properties are for mobile first view - "min-width 580px" 
+*/
 
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
+/* 
+	NAVBAR
+*/
 
 .navbar {
 	background-color: brown;
@@ -78,62 +72,46 @@ button {
 	color: bisque;
 }
 
-.navbar a.active {
+.nav-link.active {
 	color: black;
 	/* background-color: aquamarine; */
 }
 
-.navbar a:hover {
+.nav-link:hover {
 	color: gray;
 }
 
+.nav-link:not(:first-child) {
+	display: none;
+}
+
+.nav-link.icon {
+	padding: 10px 15px 10px 15px;
+	float: right;
+	display: block;
+}
+
+.navbar.responsive a.icon {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.navbar.responsive a {
+	float: none;
+	display: block;
+	text-align: left;
+}
+
+/* image */
 .hamburger-icon {
 	height: 15px;
 	padding: 10px 15px 10px 15px;
 }
 
-.nav-link.icon {
-	float: right;
-	padding: 10px 15px 10px 15px;
-	vertical-align: center;
-}
-
-@media screen and (min-width: 600px) {
-	img.hamburger-icon {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.navbar a:not(:first-child) {
-		display: none;
-	}
-
-	.navbar a.icon {
-		float: right;
-		display: block;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.navbar.responsive {
-		position: relative;
-	}
-
-	.navbar.responsive a.icon {
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
-
-	.navbar.responsive a {
-		float: none;
-		display: block;
-		text-align: left;
-	}
-}
-
-/* WELCOME */
+/* 
+	WELCOME 
+*/
 
 .welcome {
 	height: 75vh;
@@ -183,7 +161,9 @@ button {
 	text-align: center;
 }
 
-/* ABOUT */
+/* 
+	ABOUT 
+*/
 
 .about {
 	height: fit-content;
@@ -209,7 +189,9 @@ button {
 	text-align: justify;
 }
 
-/* Portfolio.html */
+/* 
+	PORTFOLIO 
+*/
 
 .portfolio {
 	height: fit-content;
@@ -220,11 +202,13 @@ button {
 .portfolio h1 {
 	text-align: left;
 	padding-left: 20px;
+	margin-top: 20px;
 }
 
 .tabs {
 	text-align: center;
 	margin-bottom: 20px;
+	margin-top: 10px;
 }
 
 .btn-tab {
@@ -257,10 +241,13 @@ button {
 	}
 }
 
-/* for art and photography */
+/* 
+	PORTFOLIO - art and photography 
+*/
+
 .art-item img {
-	width: 200px;
-	height: 140px;
+	width: 300px;
+	height: 180px;
 	box-shadow: var(--img-box-shadow);
 }
 
@@ -269,7 +256,9 @@ button {
 	margin: 0 5px 35px 5px;
 }
 
-/* for design */
+/* 
+	PORTFOLIO - design 
+*/
 
 .design {
 	height: 60%;
@@ -297,7 +286,7 @@ button {
 	color: gray;
 }
 
-/* horizontal scroll */
+/* horizontal scroll for design */
 
 .h-scroll {
 	overflow: auto;
@@ -327,13 +316,6 @@ button {
 	border: 4px solid pink;
 }
 
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-
 .footer {
 	text-align: center;
 	height: 60px;
@@ -343,4 +325,18 @@ button {
 
 .hidden {
 	display: none;
+}
+
+/* 
+	RESPONSIVE
+*/
+
+@media screen and (min-width: 580px) {
+	.nav-link:not(:first-child) {
+		display: inline;
+	}
+
+	.nav-link.icon {
+		display: none;
+	}
 }
