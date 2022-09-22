@@ -1,14 +1,41 @@
 'use strict';
 
+// navbar
 const navbar = document.querySelector('.navbar');
 const hamburgerIcon = document.querySelector('.hamburger-icon');
 
+// tabs on portfolio page
 const btnTabs = document.querySelectorAll('.btn-tab');
 const tabs = document.querySelectorAll('.tab-content');
 
+// horizontal scroll feature
 const designPreviewImg = document.querySelector('.design-preview-img');
 const hItemList = document.querySelector('.h-item-list');
 const hItems = document.querySelectorAll('.h-item');
+
+// modal
+const modal = document.querySelector('.modal');
+const modalImg = document.querySelector('.modal-img');
+const modalCaption = document.querySelector('.modal-caption');
+const modalClose = document.querySelector('.modal-close');
+
+// art and photography photos
+const artItemList = document.querySelector('.art-item-list');
+const photographyItemList = document.querySelector('.photography-item-list');
+
+// functions
+
+const hideModal = () => (modal.style.display = 'none');
+
+const displayModal = function (imgSrc, imgCaption) {
+	modal.style.display = 'block';
+	modalImg.src = imgSrc;
+	modalCaption.textContent = imgCaption;
+};
+
+const hideModalOnKeydown = function (e) {
+	if (e.key === 'Escape' && modal.style.display === 'block') hideModal();
+};
 
 const formatDate = function (dateStr) {
 	const dateObj = new Date(dateStr);
@@ -19,7 +46,7 @@ const formatDate = function (dateStr) {
 	return `${date} ${month}, ${year}`;
 };
 
-const loadImageForPreview = function (clickedItem) {
+const loadImageForPreview = function (clickedImg) {
 	// desc container elements
 	const descContainer = document.querySelector('.desc-container');
 	const descTitleEle = descContainer.querySelector('.desc-title');
@@ -27,12 +54,14 @@ const loadImageForPreview = function (clickedItem) {
 	const descDateEle = descContainer.querySelector('.desc-date');
 
 	// fetch values from clicked element
-	const itemId = clickedItem.getAttribute('id');
-	const { alt, descTitle, descText, descDate } = clickedItem.dataset;
+	const imgId = clickedImg.getAttribute('id');
+	const imgAlt = clickedImg.getAttribute('alt');
+
+	const { descTitle, descText, descDate } = clickedImg.dataset;
 
 	// change src of preview image
-	designPreviewImg.src = `./assets/designs/${itemId}.png`;
-	designPreviewImg.alt = alt;
+	designPreviewImg.src = `./assets/designs/${imgId}.png`;
+	designPreviewImg.alt = imgAlt;
 
 	descTitleEle.textContent = descTitle;
 	descTextEle.textContent = descText;
@@ -44,7 +73,7 @@ const toggleNavbar = function () {
 	else navbar.className = 'navbar';
 };
 
-// ELs
+// event listener functions
 
 const portfolioTabsEL = function () {
 	// remove active class from all tab btns
@@ -64,15 +93,34 @@ const portfolioTabsEL = function () {
 };
 
 const loadImgEL = function (e) {
+	if (!e.target.classList.contains('h-item-img')) return;
+
 	const clickedItem = e.target.closest('.h-item');
-	if (!clickedItem) return;
 
 	// remove active class from all and add to clicked item
 	hItems.forEach(i => i.classList.remove('active'));
 	clickedItem.classList.add('active');
 
-	loadImageForPreview(clickedItem);
+	loadImageForPreview(e.target);
 };
+
+const listEL = function (e) {
+	if (!e.target.classList.contains('list-img')) return;
+
+	const clickedImg = e.target;
+	const clickedImgDesc = clickedImg
+		.closest('.list-item')
+		.querySelector('p').textContent;
+
+	displayModal(e.target.src, clickedImgDesc);
+};
+
+// event listeners
+
+// modal
+modal.addEventListener('click', hideModal);
+modalClose.addEventListener('click', hideModal);
+window.addEventListener('keydown', hideModalOnKeydown);
 
 // portfolio change tabs
 btnTabs.forEach(btn => btn.addEventListener('click', portfolioTabsEL));
@@ -82,3 +130,7 @@ hamburgerIcon.addEventListener('click', toggleNavbar);
 
 // horizontal scroll - view/load image on click
 hItemList && hItemList.addEventListener('click', loadImgEL);
+
+// portfolio photos (art and photography)
+artItemList.addEventListener('click', listEL);
+photographyItemList.addEventListener('click', listEL);

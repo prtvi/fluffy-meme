@@ -58,6 +58,80 @@ button {
 	all these properties are for mobile first view - "min-width 450px" 
 */
 
+/* MODAL */
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-img {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+}
+
+.modal-caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #ccc;
+	padding: 10px 0;
+	height: 150px;
+}
+
+.modal-img,
+.modal-caption {
+	animation-name: zoom;
+	animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.modal-close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	transition: 0.3s;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+	.modal-img {
+		width: 90%;
+	}
+}
+
+/* MODAL */
+
 /* 
 	NAVBAR
 */
@@ -285,15 +359,25 @@ button {
 	PORTFOLIO - art and photography 
 */
 
-.art-item img {
-	width: 300px;
-	height: 180px;
-	box-shadow: var(--img-box-shadow);
-}
+/* ".list-item" for art-item-list and photography-item-list */
 
-.art-item {
+.list-item {
 	display: inline-block;
 	margin: 0 5px 35px 5px;
+}
+
+.list-item img {
+	width: 180px;
+	height: 180px;
+	object-fit: cover; /* to crop image */
+	box-shadow: var(--img-box-shadow);
+	border-radius: 5px;
+}
+
+.list-item img:hover {
+	cursor: pointer;
+	transition: 0.3s;
+	opacity: 0.8;
 }
 
 /* 
@@ -365,6 +449,7 @@ button {
 .footer {
 	text-align: center;
 	height: 60px;
+	padding: 10px;
 	background-color: aliceblue;
 }
 
@@ -391,3 +476,5 @@ button {
 		display: none;
 	}
 }
+
+/* make art-item 1:1 by cropping using css */
