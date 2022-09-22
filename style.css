@@ -20,7 +20,7 @@
 	--fw-600: 600;
 
 	/* Responsive screen widths */
-	/* 580, 768, 1024, 1250 */
+	/* 450, 580, 768, 1024, 1250 */
 }
 
 * {
@@ -55,7 +55,7 @@ button {
 }
 
 /* 
-	all these properties are for mobile first view - "min-width 580px" 
+	all these properties are for mobile first view - "min-width 450px" 
 */
 
 /* 
@@ -116,8 +116,7 @@ button {
 .welcome {
 	height: 75vh;
 	padding: 20px;
-	margin-top: 40px;
-	margin-bottom: 50px;
+	margin-top: 60px;
 }
 
 .welcome-logo,
@@ -149,8 +148,13 @@ button {
 	border-radius: 10px;
 }
 
+.welcome-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .welcome-header h1 {
-	line-height: var(--welcome-divs-height);
 	text-align: left;
 }
 
@@ -159,6 +163,7 @@ button {
 	clear: both;
 	height: fit-content;
 	text-align: center;
+	font-size: var(--fs-2);
 }
 
 /* 
@@ -168,6 +173,7 @@ button {
 .about {
 	height: fit-content;
 	padding: 20px;
+	margin-top: 50px;
 	margin-bottom: 50px;
 	text-align: center;
 }
@@ -187,6 +193,40 @@ button {
 .about p {
 	padding: 0 10px 0 10px;
 	text-align: justify;
+}
+
+/* 
+	CONTACT
+*/
+
+.contact {
+	height: fit-content;
+	padding: 20px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.address {
+	margin-bottom: 25px;
+}
+
+.contact h2 {
+	padding: 5px 10px 0 10px;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.social-icon {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.social-icon img {
+	width: 15px;
+}
+
+.social-icon a {
+	color: brown;
 }
 
 /* 
@@ -262,23 +302,25 @@ button {
 
 .design {
 	height: 60%;
-	width: 100%;
 	text-align: center;
 	margin-bottom: 50px;
 }
 
-.design .img-container,
-.design .desc-container {
+.design-preview {
+	margin-bottom: 30px;
+}
+
+.design-preview .img-container,
+.design-preview .desc-container {
 	display: block;
 	width: 90%;
 	text-align: center;
-	margin: 0 auto 0 auto;
+	margin: 0 auto 20px auto;
 }
 
 .design-preview-img {
-	width: 90%;
-	height: 300px;
-	margin-bottom: 20px;
+	width: 300px;
+	height: 200px;
 	box-shadow: var(--img-box-shadow);
 }
 
@@ -316,9 +358,18 @@ button {
 	border: 4px solid pink;
 }
 
+/* 
+	FOOTER
+*/
+
 .footer {
 	text-align: center;
 	height: 60px;
+	background-color: aliceblue;
+}
+
+.footer p {
+	line-height: 60px;
 }
 
 /* utility class hidden */
