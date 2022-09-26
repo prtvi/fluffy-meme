@@ -94,16 +94,30 @@ button {
 
 .modal-img,
 .modal-caption {
-	animation-name: zoom;
+	animation-name: zoom-in;
 	animation-duration: 0.6s;
 }
 
-@keyframes zoom {
+.zoom-out {
+	animation-name: zoom-out;
+	animation-duration: 0.2s;
+}
+
+@keyframes zoom-in {
 	from {
 		transform: scale(0);
 	}
 	to {
 		transform: scale(1);
+	}
+}
+
+@keyframes zoom-out {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0);
 	}
 }
 
@@ -309,7 +323,7 @@ button {
 
 .portfolio {
 	height: fit-content;
-	padding: 20px;
+	padding: 20px 20px 0 20px;
 	text-align: center;
 }
 
@@ -342,6 +356,7 @@ button {
 .tab-content.active {
 	display: block;
 	padding: 10px;
+	min-height: 60vh;
 	text-align: center;
 	animation: fade 1s ease backwards;
 }
@@ -364,14 +379,18 @@ button {
 .list-item {
 	display: inline-block;
 	margin: 0 5px 35px 5px;
+	width: 45%;
+	vertical-align: top;
 }
 
+/* make list-item 1:1 by cropping using css */
 .list-item img {
-	width: 180px;
-	height: 180px;
-	object-fit: cover; /* to crop image */
-	box-shadow: var(--img-box-shadow);
+	width: 100px;
+	height: 100px;
+	margin-bottom: 5px;
 	border-radius: 5px;
+	object-fit: cover;
+	box-shadow: var(--img-box-shadow);
 }
 
 .list-item img:hover {
@@ -387,15 +406,16 @@ button {
 .design {
 	height: 60%;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .design-preview {
 	margin-bottom: 30px;
+	height: 350px;
 }
 
 .design-preview .img-container,
-.design-preview .desc-container {
+.design-preview .caption-container {
 	display: block;
 	width: 90%;
 	text-align: center;
@@ -403,18 +423,57 @@ button {
 }
 
 .design-preview-img {
-	width: 300px;
+	width: 100%;
 	height: 200px;
+	border-radius: 5px;
 	box-shadow: var(--img-box-shadow);
+}
+
+.design h3,
+.design p {
+	margin-bottom: 10px;
 }
 
 .design span {
 	color: gray;
 }
 
+/* integrating prev & next buttons */
+
+.controls {
+	position: absolute;
+	left: 0;
+	top: 42%;
+	width: auto;
+	padding: 15px;
+	margin-top: -30px;
+	color: red;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.next {
+	display: block;
+	right: 0;
+	left: inherit;
+	width: fit-content;
+	border-radius: 3px 0 0 3px;
+}
+
+.controls:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* integrating prev & next buttons */
+
 /* horizontal scroll for design */
 
 .h-scroll {
+	margin: 0 15px 0 15px;
 	overflow: auto;
 	white-space: nowrap;
 	background-color: rgba(212, 212, 212, 0.2);
@@ -422,7 +481,7 @@ button {
 
 .h-item {
 	display: inline-block;
-	padding: 10px;
+	padding: 10px 2px 10px 2px;
 	height: 66px;
 	width: 66px;
 }
@@ -434,12 +493,12 @@ button {
 .h-item img {
 	width: 60px;
 	height: 60px;
-	border: 3px solid gray;
-	border-radius: 5px;
+	border-radius: 3px;
+	opacity: 0.7;
 }
 
 .h-item.active img {
-	border: 4px solid pink;
+	opacity: 1;
 }
 
 /* 
@@ -476,5 +535,3 @@ button {
 		display: none;
 	}
 }
-
-/* make art-item 1:1 by cropping using css */

@@ -1,40 +1,54 @@
 'use strict';
 
-// navbar
-const navbar = document.querySelector('.navbar');
-const hamburgerIcon = document.querySelector('.hamburger-icon');
-
-// tabs on portfolio page
-const btnTabs = document.querySelectorAll('.btn-tab');
-const tabs = document.querySelectorAll('.tab-content');
-
-// horizontal scroll feature
-const designPreviewImg = document.querySelector('.design-preview-img');
-const hItemList = document.querySelector('.h-item-list');
-const hItems = document.querySelectorAll('.h-item');
-
 // modal
 const modal = document.querySelector('.modal');
 const modalImg = document.querySelector('.modal-img');
 const modalCaption = document.querySelector('.modal-caption');
 const modalClose = document.querySelector('.modal-close');
 
-// art and photography photos
+// navbar
+const navbar = document.querySelector('.navbar');
+const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+// portfolio change tab
+const btnTabs = document.querySelectorAll('.btn-tab');
+const tabs = document.querySelectorAll('.tab-content');
+
+// art and photography
 const artItemList = document.querySelector('.art-item-list');
 const photographyItemList = document.querySelector('.photography-item-list');
 
+// portfolio - design - horizontal scroll feature
+const designPreviewImg = document.querySelector('.design-preview-img');
+const hItemList = document.querySelector('.h-item-list');
+const hItems = document.querySelectorAll('.h-item');
+const nDesigns = hItems.length;
+const prevArrow = document.querySelector('.controls.prev');
+const nextArrow = document.querySelector('.controls.next');
+
 // functions
 
-const hideModal = () => (modal.style.display = 'none');
+const hideImgModal = function (e) {
+	if (e.target === modalImg) return;
 
-const displayModal = function (imgSrc, imgCaption) {
-	modal.style.display = 'block';
-	modalImg.src = imgSrc;
-	modalCaption.textContent = imgCaption;
+	modalImg.classList.add('zoom-out');
+	modalCaption.classList.add('zoom-out');
+
+	setTimeout(() => (modal.style.display = 'none'), 200);
 };
 
-const hideModalOnKeydown = function (e) {
-	if (e.key === 'Escape' && modal.style.display === 'block') hideModal();
+const displayImgModal = function (imgEle, imgCaption) {
+	modalImg.classList.remove('zoom-out');
+	modalCaption.classList.remove('zoom-out');
+
+	modalImg.src = imgEle.src;
+	modalCaption.textContent = imgCaption;
+
+	modal.style.display = 'block';
+};
+
+const hideImgModalOnKeydown = function (e) {
+	if (e.key === 'Escape' && modal.style.display === 'block') hideImgModal(e);
 };
 
 const formatDate = function (dateStr) {
@@ -48,29 +62,36 @@ const formatDate = function (dateStr) {
 
 const loadImageForPreview = function (clickedImg) {
 	// desc container elements
-	const descContainer = document.querySelector('.desc-container');
-	const descTitleEle = descContainer.querySelector('.desc-title');
-	const descTextEle = descContainer.querySelector('.desc-text');
-	const descDateEle = descContainer.querySelector('.desc-date');
+	const captionContainer = document.querySelector('.caption-container');
+	const captionTitleEle = captionContainer.querySelector('.caption-title');
+	const captionTextEle = captionContainer.querySelector('.caption-text');
+	const captionDateEle = captionContainer.querySelector('.caption-date');
 
-	// fetch values from clicked element
-	const imgId = clickedImg.getAttribute('id');
-	const imgAlt = clickedImg.getAttribute('alt');
-
-	const { descTitle, descText, descDate } = clickedImg.dataset;
+	const { captionTitle, captionText, captionDate } = clickedImg.dataset;
 
 	// change src of preview image
-	designPreviewImg.src = `./assets/designs/${imgId}.png`;
-	designPreviewImg.alt = imgAlt;
+	designPreviewImg.src = clickedImg.src;
+	designPreviewImg.alt = clickedImg.alt;
+	designPreviewImg.dataset.imgId = clickedImg.id;
 
-	descTitleEle.textContent = descTitle;
-	descTextEle.textContent = descText;
-	descDateEle.textContent = formatDate(descDate);
+	captionTitleEle.textContent = captionTitle;
+	captionTextEle.textContent = captionText;
+	captionDateEle.textContent = formatDate(captionDate);
 };
 
 const toggleNavbar = function () {
 	if (navbar.className === 'navbar') navbar.className += ' responsive';
 	else navbar.className = 'navbar';
+};
+
+const addActiveClassAndLoadImg = function (element) {
+	// remove active class from others except clicked item
+	hItems.forEach(i => i.classList.remove('active'));
+
+	const clickedItem = element.closest('.h-item');
+	clickedItem.classList.add('active');
+
+	loadImageForPreview(element);
 };
 
 // event listener functions
@@ -92,45 +113,60 @@ const portfolioTabsEL = function () {
 	});
 };
 
-const loadImgEL = function (e) {
-	if (!e.target.classList.contains('h-item-img')) return;
-
-	const clickedItem = e.target.closest('.h-item');
-
-	// remove active class from all and add to clicked item
-	hItems.forEach(i => i.classList.remove('active'));
-	clickedItem.classList.add('active');
-
-	loadImageForPreview(e.target);
-};
-
 const listEL = function (e) {
 	if (!e.target.classList.contains('list-img')) return;
 
-	const clickedImg = e.target;
-	const clickedImgDesc = clickedImg
+	const clickedImgDesc = e.target
 		.closest('.list-item')
 		.querySelector('p').textContent;
 
-	displayModal(e.target.src, clickedImgDesc);
+	displayImgModal(e.target, clickedImgDesc);
+};
+
+const hItemListEL = function (e) {
+	if (!e.target.classList.contains('h-item-img')) return;
+
+	addActiveClassAndLoadImg(e.target);
+};
+
+const nextAndPrevArrowEL = function (e) {
+	const currImg = document.querySelector('.design-preview-img');
+	const currNum = +currImg.dataset.imgId.slice(1);
+
+	let num;
+	if (e.target.classList.contains('prev')) {
+		num = currNum - 1;
+		if (num < 1) num = nDesigns;
+	} else if (e.target.classList.contains('next')) {
+		num = currNum + 1;
+		if (num > nDesigns) num = 1;
+	}
+
+	const nextImgToLoad = document.getElementById(`d${num}`);
+	addActiveClassAndLoadImg(nextImgToLoad);
 };
 
 // event listeners
 
 // modal
-modal.addEventListener('click', hideModal);
-modalClose.addEventListener('click', hideModal);
-window.addEventListener('keydown', hideModalOnKeydown);
+modal && modal.addEventListener('click', hideImgModal);
+modalClose && modalClose.addEventListener('click', hideImgModal);
+window.addEventListener('keydown', hideImgModalOnKeydown);
+
+// navbar
+hamburgerIcon.addEventListener('click', toggleNavbar);
 
 // portfolio change tabs
 btnTabs.forEach(btn => btn.addEventListener('click', portfolioTabsEL));
 
-// adding functionality to design tab
-hamburgerIcon.addEventListener('click', toggleNavbar);
+// portfolio (art and photography)
+artItemList && artItemList.addEventListener('click', listEL);
+photographyItemList && photographyItemList.addEventListener('click', listEL);
 
+// portfolio (design)
 // horizontal scroll - view/load image on click
-hItemList && hItemList.addEventListener('click', loadImgEL);
+hItemList && hItemList.addEventListener('click', hItemListEL);
 
-// portfolio photos (art and photography)
-artItemList.addEventListener('click', listEL);
-photographyItemList.addEventListener('click', listEL);
+// arrows for browsing gallery
+prevArrow && prevArrow.addEventListener('click', nextAndPrevArrowEL);
+nextArrow && nextArrow.addEventListener('click', nextAndPrevArrowEL);
