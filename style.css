@@ -79,6 +79,7 @@ button {
 	display: block;
 	width: 80%;
 	max-width: 700px;
+	border: 5px solid white;
 }
 
 .modal-caption {
@@ -226,6 +227,7 @@ button {
 .welcome-logo img {
 	vertical-align: middle;
 	height: 100px;
+	border-radius: 3px;
 	/* box-shadow: var(--img-box-shadow); */
 }
 
@@ -311,16 +313,25 @@ button {
 }
 
 .social-icon {
-	display: block;
 	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.social-icon p {
+	display: inline;
+	color: brown;
 }
 
 .social-icon img {
+	display: inline;
 	width: 15px;
+	height: 15px;
+	vertical-align: middle;
 }
 
-.social-icon a {
-	color: brown;
+.social-icon:hover img {
+	transform: scale(1.2);
 }
 
 /* 
@@ -419,6 +430,17 @@ button {
 .design-preview {
 	margin-bottom: 20px;
 	height: 350px;
+	position: relative;
+}
+
+.design-preview-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	height: fit-content;
 }
 
 .design-preview .img-container,
@@ -431,7 +453,8 @@ button {
 
 .design-preview-img {
 	width: auto;
-	max-width: 100%;
+	max-width: 300px;
+	min-height: 150px;
 	max-height: 200px;
 	border-radius: 5px;
 	box-shadow: var(--img-box-shadow);
@@ -451,7 +474,7 @@ button {
 .controls {
 	position: absolute;
 	left: 0;
-	top: 42%;
+	top: 335px;
 	width: auto;
 	padding: 15px;
 	margin-top: -30px;
@@ -559,18 +582,24 @@ button {
 		padding-right: 40px;
 	}
 
+	.welcome-logo img {
+		width: 150px;
+		height: 150px;
+	}
+
 	.design-preview {
 		min-height: 450px;
 	}
 
 	.design-preview-img {
-		max-height: 280px;
 		width: auto;
-		max-width: 100%;
+		max-width: 470px;
+		min-height: 250px;
+		max-height: 300px;
 	}
 
 	.controls {
-		top: 45%;
+		top: 400px;
 	}
 
 	.modal-img {
@@ -583,6 +612,15 @@ button {
 @media screen and (min-width: 768px) {
 	/* index */
 
+	.welcome-logo img {
+		width: 250px;
+		height: 250px;
+	}
+
+	.welcome-header h1 {
+		font-size: 28px;
+	}
+
 	.about {
 		text-align: center;
 		height: 270px;
@@ -593,6 +631,7 @@ button {
 		width: 50%;
 	}
 
+	/* vertically align items */
 	.about-img {
 		height: inherit;
 		float: right;
@@ -657,13 +696,14 @@ button {
 	}
 
 	.design-preview-img {
-		max-height: 350px;
 		width: auto;
-		max-width: 100%;
+		max-width: 640px;
+		min-height: 300px;
+		max-height: 350px;
 	}
 
 	.controls {
-		top: 47%;
+		top: 390px;
 	}
 }
 
@@ -676,8 +716,17 @@ button {
 		padding-right: 100px;
 	}
 
+	.welcome-logo img {
+		width: 350px;
+		height: 350px;
+	}
+
+	.welcome-header h1 {
+		font-size: 32px;
+	}
+
 	.navbar a:first-child {
-		padding-left: 100px;
+		margin-left: 100px;
 	}
 
 	.welcome-header h1 {
@@ -693,13 +742,14 @@ button {
 	}
 
 	.design-preview-img {
-		max-height: 450px;
 		width: auto;
-		max-width: 100%;
+		max-width: 725px;
+		min-height: 400px;
+		max-height: 450px;
 	}
 
 	.controls {
-		top: 53%;
+		top: 460px;
 	}
 }
 
@@ -713,7 +763,7 @@ button {
 	}
 
 	.navbar a:first-child {
-		padding-left: 150px;
+		margin-left: 150px;
 	}
 
 	.design-preview {
@@ -721,12 +771,13 @@ button {
 	}
 
 	.design-preview-img {
-		max-height: 550px;
 		width: auto;
-		max-width: 100%;
+		max-width: 850px;
+		min-height: 500px;
+		max-height: 550px;
 	}
 
 	.controls {
-		top: 57%;
+		top: 500px;
 	}
 }
