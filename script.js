@@ -8,7 +8,7 @@ const modalClose = document.querySelector('.modal-close');
 
 // navbar
 const navbar = document.querySelector('.navbar');
-const hamburgerIcon = document.querySelector('.hamburger-icon');
+const navbarToggleIcon = document.querySelector('.navbar-toggle-icon');
 
 // portfolio change tab
 const btnTabs = document.querySelectorAll('.btn-tab');
@@ -80,8 +80,13 @@ const loadImageForPreview = function (clickedImg) {
 };
 
 const toggleNavbar = function () {
-	if (navbar.className === 'navbar') navbar.className += ' responsive';
-	else navbar.className = 'navbar';
+	if (navbar.className === 'navbar') {
+		navbar.className += ' responsive';
+		navbarToggleIcon.src = './assets/icons/close.png';
+	} else {
+		navbar.className = 'navbar';
+		navbarToggleIcon.src = './assets/icons/hamburger.png';
+	}
 };
 
 const addActiveClassAndLoadImg = function (element) {
@@ -154,7 +159,7 @@ modalClose && modalClose.addEventListener('click', hideImgModal);
 window.addEventListener('keydown', hideImgModalOnKeydown);
 
 // navbar
-hamburgerIcon.addEventListener('click', toggleNavbar);
+navbarToggleIcon.addEventListener('click', toggleNavbar);
 
 // portfolio change tabs
 btnTabs.forEach(btn => btn.addEventListener('click', portfolioTabsEL));
