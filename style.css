@@ -231,7 +231,7 @@ button {
 	position: relative;
 }
 
-.welcome-logo,
+.brand-logo,
 .separator,
 .welcome-header {
 	height: var(--welcome-divs-height);
@@ -241,12 +241,12 @@ button {
 	margin-bottom: 80px;
 }
 
-.welcome-logo {
+.brand-logo {
 	line-height: var(--welcome-divs-height);
 	text-align: right;
 }
 
-.welcome-logo img {
+.brand-logo img {
 	vertical-align: middle;
 	height: 100px;
 	width: 100px;
@@ -592,7 +592,7 @@ button {
 */
 
 @media screen and (min-width: 450px) {
-	.welcome-logo img {
+	.brand-logo img {
 		height: 150px;
 	}
 
@@ -633,7 +633,7 @@ button {
 		padding-right: 40px;
 	}
 
-	.welcome-logo img {
+	.brand-logo img {
 		width: 175px;
 		height: 175px;
 	}
@@ -668,12 +668,12 @@ button {
 @media screen and (min-width: 768px) {
 	/* index */
 
-	.welcome-logo img {
+	.brand-logo img {
 		width: 250px;
 		height: 250px;
 	}
 
-	.welcome-header h1 {
+	.brand-header h1 {
 		font-size: 28px;
 	}
 
@@ -784,7 +784,7 @@ button {
 		padding-right: 100px;
 	}
 
-	.welcome-logo img {
+	.brand-logo img {
 		width: 350px;
 		height: 350px;
 	}
