@@ -103,8 +103,7 @@ button {
 	height: 150px;
 }
 
-.modal-img,
-.modal-caption {
+.zoom-in {
 	animation-name: zoom-in;
 	animation-duration: 0.6s;
 }

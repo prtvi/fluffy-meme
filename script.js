@@ -4,11 +4,11 @@
 const modal = document.querySelector('.modal');
 const modalImg = document.querySelector('.modal-img');
 const modalCaption = document.querySelector('.modal-caption');
-const modalClose = document.querySelector('.modal-close');
 
 // navbar
 const navbar = document.querySelector('.navbar');
-const navbarToggleIcon = document.querySelector('.navbar-toggle-icon');
+const navbarToggleIcon = document.querySelector('.nav-link.icon');
+const navbarToggleIconImg = document.querySelector('.nav-link.icon img');
 
 // portfolio change tab
 const btnTabs = document.querySelectorAll('.btn-tab');
@@ -31,6 +31,9 @@ const nextArrow = document.querySelector('.controls.next');
 const hideImgModal = function (e) {
 	if (e.target === modalImg) return;
 
+	modalImg.classList.remove('zoom-in');
+	modalCaption.classList.remove('zoom-in');
+
 	modalImg.classList.add('zoom-out');
 	modalCaption.classList.add('zoom-out');
 
@@ -43,6 +46,9 @@ const displayImgModal = function (imgEle, imgCaption) {
 
 	modalImg.src = imgEle.src;
 	modalCaption.textContent = imgCaption;
+
+	modalImg.classList.add('zoom-in');
+	modalCaption.classList.add('zoom-in');
 
 	modal.style.display = 'block';
 };
@@ -82,10 +88,10 @@ const loadImageForPreview = function (clickedImg) {
 const toggleNavbar = function () {
 	if (navbar.className === 'navbar') {
 		navbar.className += ' responsive';
-		navbarToggleIcon.src = './assets/icons/close.png';
+		navbarToggleIconImg.src = './assets/icons/close.png';
 	} else {
 		navbar.className = 'navbar';
-		navbarToggleIcon.src = './assets/icons/hamburger.png';
+		navbarToggleIconImg.src = './assets/icons/hamburger.png';
 	}
 };
 
@@ -95,6 +101,8 @@ const addActiveClassAndLoadImg = function (element) {
 
 	const clickedItem = element.closest('.h-item');
 	clickedItem.classList.add('active');
+
+	clickedItem.scrollIntoView(false);
 
 	loadImageForPreview(element);
 };
@@ -155,7 +163,6 @@ const nextAndPrevArrowEL = function (e) {
 
 // modal
 modal && modal.addEventListener('click', hideImgModal);
-modalClose && modalClose.addEventListener('click', hideImgModal);
 window.addEventListener('keydown', hideImgModalOnKeydown);
 
 // navbar
