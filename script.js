@@ -7,8 +7,9 @@ const modalCaption = document.querySelector('.modal-caption');
 
 // navbar
 const navbar = document.querySelector('.navbar');
-const navbarToggleIcon = document.querySelector('.nav-link.icon');
-const navbarToggleIconImg = document.querySelector('.nav-link.icon img');
+const hamburger = document.querySelector('.hamburger');
+const hamburgerLinkEl = document.querySelector('.nav-link.icon');
+const navLinks = document.querySelectorAll('.nav-link');
 
 // portfolio change tab
 const btnTabs = document.querySelectorAll('.btn-tab');
@@ -86,13 +87,12 @@ const loadImageForPreview = function (clickedImg) {
 };
 
 const toggleNavbar = function () {
-	if (navbar.className === 'navbar') {
-		navbar.className += ' responsive';
-		navbarToggleIconImg.src = './assets/icons/close.png';
-	} else {
-		navbar.className = 'navbar';
-		navbarToggleIconImg.src = './assets/icons/hamburger.png';
-	}
+	navbar.classList.toggle('toggle');
+	hamburger.classList.toggle('toggle');
+
+	navLinks.forEach(n => {
+		if (!n.classList.contains('icon')) n.classList.toggle('toggle');
+	});
 };
 
 const addActiveClassAndLoadImg = function (element) {
@@ -166,7 +166,7 @@ modal && modal.addEventListener('click', hideImgModal);
 window.addEventListener('keydown', hideImgModalOnKeydown);
 
 // navbar
-navbarToggleIcon.addEventListener('click', toggleNavbar);
+hamburgerLinkEl.addEventListener('click', toggleNavbar);
 
 // portfolio change tabs
 btnTabs.forEach(btn => btn.addEventListener('click', portfolioTabsEL));
