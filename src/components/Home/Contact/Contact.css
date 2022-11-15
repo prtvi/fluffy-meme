@@ -1,0 +1,59 @@
+.contact {
+	height: fit-content;
+	padding: 20px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.address {
+	margin-bottom: 25px;
+}
+
+.contact h2 {
+	padding: 5px 10px 0 10px;
+	text-align: left;
+	margin-bottom: 40px;
+}
+
+.social-icon {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.social-icon p {
+	display: inline;
+	color: brown;
+}
+
+.social-icon img {
+	display: inline;
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+.social-icon:hover img {
+	transform: scale(1.2);
+}
+
+@media screen and (min-width: 580px) {
+	.contact {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.contact {
+		padding-left: 100px;
+		padding-right: 100px;
+	}
+}
+
+@media screen and (min-width: 1250px) {
+	.contact {
+		padding-left: 150px;
+		padding-right: 150px;
+	}
+}

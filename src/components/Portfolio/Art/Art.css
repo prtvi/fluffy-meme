@@ -1,0 +1,39 @@
+/* 
+	PORTFOLIO - art and photography 
+*/
+
+.list-item {
+	display: inline-block;
+	margin: 0 5px 35px 5px;
+	width: 45%;
+	vertical-align: top;
+}
+
+/* make list-item 1:1 by cropping using css */
+.list-item img {
+	width: 100px;
+	height: 100px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	object-fit: cover;
+	box-shadow: var(--img-box-shadow);
+}
+
+.list-item img:hover {
+	cursor: pointer;
+	transition: 0.3s;
+	opacity: 0.8;
+	transform: scale(1.1);
+}
+
+@media screen and (min-width: 450px) {
+	.list-item {
+		width: 30%;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.list-item {
+		width: 20%;
+	}
+}

@@ -1,0 +1,70 @@
+:root {
+	--ff-poppins: 'Poppins', sans-serif;
+
+	--welcome-divs-height: 60vh;
+	--img-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+		0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	--fs-1: 24px;
+	--fs-2: 18px;
+	--fs-3: 17px;
+	--fs-4: 16px;
+	--fs-5: 15px;
+	--fs-6: 14px;
+	--fs-7: 13px;
+	--fs-8: 11px;
+
+	--fw-300: 300;
+	--fw-400: 400;
+	--fw-500: 500;
+	--fw-600: 600;
+
+	/* constants */
+	--navbar-h: 60px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-family: var(--ff-poppins);
+	scroll-behavior: smooth;
+}
+
+body {
+	background: white;
+}
+
+a {
+	text-decoration: none;
+	color: pink;
+}
+
+li {
+	list-style: none;
+}
+
+button {
+	background: none;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+	font-family: var(--ff-poppins);
+}
+
+/* 
+	Responsive screen widths 
+	450, 580, 768, 1024, 1250 
+
+	mobile   - 360 × 640 
+	mobile   - 450 × 768 
+	tablets  - 580 × 768 
+	tablets  - 768 × 1024 
+	desktops - 1024 × 768 
+	desktops - 1280 × 720 
+	desktops - 1440 × 900
+*/
+
+/* all these properties are for mobile first view - "upto width of 450px" */
